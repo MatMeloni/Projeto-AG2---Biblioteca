@@ -1,9 +1,5 @@
 import tkinter as tk
-from Pages.landing_page import LandingPage
-from Pages.cadastro_page import CadastroPage
-from Pages.categoria_livros_page import CategoriaLivrosPage
-from Pages.pagina_inicial import paginainicial
-from biblioteca import Biblioteca
+import Pages.pagina_inicial
 
 class App(tk.Tk):
     def __init__(self):
@@ -12,13 +8,13 @@ class App(tk.Tk):
         self.geometry("800x600")
         self.frames = {}
 
-        for PageClass in (paginainicial, LandingPage, CadastroPage, CategoriaLivrosPage, Biblioteca):
+        for PageClass in (Pages.pagina_inicial):
             page_name = PageClass.__name__
             frame = PageClass(self)
             self.frames[page_name] = frame
             frame.grid(row=0, column=0, sticky="nsew")
 
-        self.show_frame("PaginaInicial")
+        self.show_frame("paginainicial")
 
     def show_frame(self, page_name):
         frame = self.frames[page_name]

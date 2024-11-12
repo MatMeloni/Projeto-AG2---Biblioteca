@@ -3,10 +3,10 @@ from modelos import Livro, Membro, Emprestimo
 from datetime import date
 
 class Biblioteca:
-    def __init__(self, db_name='biblioteca.db'):
-        self.conexao = sqlite3.connect(db_name)
+    def __init__(self,app_instance):
+        self.app=app_instance
+        self.conexao = sqlite3.connect('biblioteca.db')
         self.cursor = self.conexao.cursor()
-        self.criar_tabelas()
 
     def criar_tabelas(self):
         # Criação das tabelas se não existirem
